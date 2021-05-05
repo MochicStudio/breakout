@@ -14,10 +14,6 @@ end
 love.draw = function()
 	local ballWX, ballWY = ball.body:getWorldCenter()
 
-	love.graphics.polygon('line', boundaryTop.body:getWorldPoints(boundaryTop.shape:getPoints()))
-	love.graphics.polygon('line', boundaryRight.body:getWorldPoints(boundaryRight.shape:getPoints()))
-	love.graphics.polygon('line', boundaryBottom.body:getWorldPoints(boundaryBottom.shape:getPoints()))
-	love.graphics.polygon('line', boundaryLeft.body:getWorldPoints(boundaryLeft.shape:getPoints()))
 	love.graphics.circle('fill', ballWX, ballWY, ball.shape:getRadius())
 	love.graphics.polygon('fill', paddle.body:getWorldPoints(paddle.shape:getPoints()))
 end
