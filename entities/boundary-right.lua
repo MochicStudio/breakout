@@ -9,6 +9,6 @@ local boundaryRight = {}
 boundaryRight.body = love.physics.newBody(world, MORE_THAN_WIDTH, HALF_HEIGHT, 'static')
 boundaryRight.shape = love.physics.newRectangleShape(1, 600)
 boundaryRight.fixture = love.physics.newFixture(boundaryRight.body, boundaryRight.shape)
-boundaryRight.fixture:setUserData('boundaryRight')
+boundaryRight.fixture:setUserData(boundaryRight)
 
 return boundaryRight
