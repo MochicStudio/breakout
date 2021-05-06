@@ -8,6 +8,6 @@ local boundaryBottom = {}
 boundaryBottom.body = love.physics.newBody(world, 400, MORE_THAN_HEIGHT, 'static')
 boundaryBottom.shape = love.physics.newRectangleShape(800, 1)
 boundaryBottom.fixture = love.physics.newFixture(boundaryBottom.body, boundaryBottom.shape)
-boundaryBottom.fixture:setUserData('boundaryBottom')
+boundaryBottom.fixture:setUserData(boundaryBottom)
 
 return boundaryBottom
