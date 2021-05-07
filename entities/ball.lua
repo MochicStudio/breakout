@@ -3,7 +3,7 @@ local world = require('world')
 
 return function(posX, posY)
 	local ball = {}
-	ball.body = love.physics.newBody(world, 400, 200, 'dynamic')
+	ball.body = love.physics.newBody(world, posX, posY, 'dynamic')
 	ball.body.setMass(ball.body, 32)
 	ball.body:setLinearVelocity(300, 300)
 	ball.shape = love.physics.newCircleShape(10)

@@ -17,7 +17,7 @@ local entities = {
 	boundaryRight(love.graphics.getWidth() + 1, love.graphics.getHeight() / HALF),
 	boundaryBottom(love.graphics.getWidth() / HALF, love.graphics.getHeight() + 1),
 	boundaryLeft(-1, love.graphics.getHeight() / HALF),
-	ball(600, 20),
+	ball(love.graphics.getWidth() / HALF, love.graphics.getHeight() / HALF),
 	paddle(love.graphics.getWidth() / HALF, love.graphics.getHeight() * THREE_QUARTER),
 	brick(50, 50),
 	brick(101, 50),
