@@ -9,7 +9,16 @@ local paddle = require('entities/paddle')
 local keyMap = require('keymap')
 local paused = false
 
-local bricks = {
+local HALF = 2
+local THREE_QUARTER = 0.75
+
+local entities = {
+	boundaryTop(love.graphics.getWidth() / HALF, -1),
+	boundaryRight(love.graphics.getWidth() + 1, love.graphics.getHeight() / HALF),
+	boundaryBottom(love.graphics.getWidth() / HALF, love.graphics.getHeight() + 1),
+	boundaryLeft(-1, love.graphics.getHeight() / HALF),
+	ball(600, 20),
+	paddle(love.graphics.getWidth() / HALF, love.graphics.getHeight() * THREE_QUARTER),
 	brick(50, 50),
 	brick(101, 50),
 	brick(152, 50)
@@ -26,14 +35,9 @@ love.draw = function()
 		love.graphics.print('Paused', love.graphics.getWidth() / 2, love.graphics.getHeight() / 2)
 	end
 
-	local ballWX, ballWY = ball.body:getWorldCenter()
-
-	for i, brick in ipairs(bricks) do
-		love.graphics.polygon('fill', brick.body:getWorldPoints(brick.shape:getPoints()))
+	for i, entity in ipairs(entities) do
+		entity:draw()
 	end
-
-	love.graphics.circle('fill', ballWX, ballWY, ball.shape:getRadius())
-	love.graphics.polygon('fill', paddle.body:getWorldPoints(paddle.shape:getPoints()))
 end
 
 love.focus = function(focus)
