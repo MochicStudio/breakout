@@ -14,5 +14,10 @@ return function(posX, posY)
 	-- all the information of the entity it self and not just the name
 	brick.fixture:setUserData(brick)
 
+	-- Entity handles it's own draw function
+	brick.draw = function(self)
+		love.graphics.polygon('fill', brick.body:getWorldPoints(brick.shape:getPoints()))
+	end
+
 	return brick
 end
