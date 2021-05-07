@@ -36,7 +36,7 @@ love.draw = function()
 	end
 
 	for i, entity in ipairs(entities) do
-		entity:draw()
+		if entity.draw then entity:draw() end
 	end
 end
 
