@@ -1,28 +1,7 @@
 local world = require('world')
-local boundaryTop = require('entities/boundary-top')
-local boundaryRight = require('entities/boundary-right')
-local boundaryBottom = require('entities/boundary-bottom')
-local boundaryLeft = require('entities/boundary-left')
-local brick = require('entities/brick')
-local ball = require('entities/ball')
-local paddle = require('entities/paddle')
+local entities = require('entities')
 local keyMap = require('keymap')
 local paused = false
-
-local HALF = 2
-local THREE_QUARTER = 0.75
-
-local entities = {
-	boundaryTop(love.graphics.getWidth() / HALF, -1),
-	boundaryRight(love.graphics.getWidth() + 1, love.graphics.getHeight() / HALF),
-	boundaryBottom(love.graphics.getWidth() / HALF, love.graphics.getHeight() + 1),
-	boundaryLeft(-1, love.graphics.getHeight() / HALF),
-	ball(love.graphics.getWidth() / HALF, love.graphics.getHeight() / HALF),
-	paddle(love.graphics.getWidth() / HALF, love.graphics.getHeight() * THREE_QUARTER),
-	brick(50, 50),
-	brick(101, 50),
-	brick(152, 50)
-}
 
 love.update = function(dt)
 	if not paused then
@@ -36,6 +15,7 @@ love.draw = function()
 	end
 
 	for i, entity in ipairs(entities) do
+		-- Shorthand for entity.draw(entity)
 		if entity.draw then entity:draw() end
 	end
 end
