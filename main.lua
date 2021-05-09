@@ -1,13 +1,6 @@
 local world = require('world')
+local input = require('input')
 local entities = require('entities')
-local keyMap = require('keymap')
-local paused = false
-
-love.update = function(dt)
-	if not paused then
-		world:update(dt)
-	end
-end
 
 love.draw = function()
 	if paused then
@@ -20,17 +13,25 @@ love.draw = function()
 	end
 end
 
-love.focus = function(focus)
+love.focus = function(focused)
 	-- Pause the game when window is not focused
-	paused = not focus
+	input.toggleFocus(focused)
 end
 
 love.keypressed = function(pressedKey)
-	if keyMap[pressedKey] then
-		local response = keyMap[pressedKey]()
+	input.press(pressedKey)
+end
 
-		if response == 'pause' then
-			paused = not paused
+love.keyreleased = function(releasedKey)
+	input.release(releasedKey)
+end
+
+love.update = function(dt)
+	if not input.paused then
+		for i, entity in ipairs(entities) do
+			if entity.update then entity:update(dt) end
 		end
+
+		world:update(dt)
 	end
 end
