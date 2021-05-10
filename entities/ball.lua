@@ -9,6 +9,7 @@ return function(posX, posY)
 	ball.shape = love.physics.newCircleShape(10)
 	ball.fixture = love.physics.newFixture(ball.body, ball.shape)
 	ball.fixture:setRestitution(1)
+	ball.fixture:setFriction(0) -- No friction at all
 	ball.fixture:setUserData(ball)
 
 

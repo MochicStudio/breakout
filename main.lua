@@ -3,8 +3,10 @@ local input = require('input')
 local entities = require('entities')
 
 love.draw = function()
-	if paused then
-		love.graphics.print('Paused', love.graphics.getWidth() / 2, love.graphics.getHeight() / 2)
+	local HALF = 2
+
+	if input.paused then
+		love.graphics.print('Paused', love.graphics.getWidth() / HALF, love.graphics.getHeight() / HALF)
 	end
 
 	for i, entity in ipairs(entities) do
