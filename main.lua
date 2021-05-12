@@ -32,6 +32,15 @@ love.update = function(dt)
 	if not input.paused then
 		for i, entity in ipairs(entities) do
 			if entity.update then entity:update(dt) end
+
+			-- If the entity (brick) has no health
+			-- remove it from the table and destroy
+			-- its fixture
+			if entity.health == 0 then
+				print('Brick has no health, remove it')
+				table.remove(entities, i)
+				entity.fixture:destroy()
+			end
 		end
 
 		world:update(dt)
