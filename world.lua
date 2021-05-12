@@ -5,6 +5,13 @@ local beginContact = function(fixtureA, fixtureB, contact)
 end
 
 local endContact = function(fixtureA, fixtureB, contact)
+	-- Get entities that are being in contact
+	local entityA = fixtureA:getUserData()
+	local entityB = fixtureB:getUserData()
+
+	-- If entity has endContact mehtod, execute it
+	if entityA.endContact then entityA:endContact() end
+	if entityB.endContact then entityB:endContact() end
 end
 
 local preSolve = function(fixtureA, fixtureB, contact)
