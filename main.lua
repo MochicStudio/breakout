@@ -37,7 +37,6 @@ love.update = function(dt)
 			-- remove it from the table and destroy
 			-- its fixture
 			if entity.health == 0 then
-				print('Brick has no health, remove it')
 				table.remove(entities, i)
 				entity.fixture:destroy()
 			end

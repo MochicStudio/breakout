@@ -36,7 +36,6 @@ return function(posX, posY)
 
 	brick.endContact = function(self)
 		self.health = self.health - 1
-		print('Brick has ' .. self.health .. ' health')
 	end
 
 	return brick
