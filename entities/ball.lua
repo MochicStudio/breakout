@@ -19,6 +19,7 @@ return function(posX, posY)
 	ball.draw = function(self)
 		local ballWX, ballWY = ball.body:getWorldCenter()
 
+		love.graphics.setColor(1, 1, 1, 1)
 		love.graphics.circle('fill', ballWX, ballWY, ball.shape:getRadius())
 	end
 

@@ -21,6 +21,7 @@ return function(posX, posY)
 
 	-- Entity handles it's own draw function
 	paddle.draw = function(self)
+		love.graphics.setColor(1, 1, 1, 1)
 		love.graphics.polygon('fill', paddle.body:getWorldPoints(paddle.shape:getPoints()))
 	end
 
