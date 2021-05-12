@@ -7,6 +7,9 @@ local world = require('world')
 -- on the world
 return function(posX, posY)
 	local brick = {}
+
+	brick.health = 2
+
 	brick.body = love.physics.newBody(world, posX, posY, 'static')
 	brick.shape = love.physics.newRectangleShape(50, 25)
 	brick.fixture = love.physics.newFixture(brick.body, brick.shape)
@@ -17,6 +20,11 @@ return function(posX, posY)
 	-- Entity handles it's own draw function
 	brick.draw = function(self)
 		love.graphics.polygon('fill', brick.body:getWorldPoints(brick.shape:getPoints()))
+	end
+
+	brick.endContact = function(self)
+		self.health = self.health - 1
+		print('Brick has ' .. self.health .. ' health')
 	end
 
 	return brick
