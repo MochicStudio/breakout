@@ -21,15 +21,17 @@ local DOUBLE = 2
 local BRICK_WIDTH = 50
 local BRICK_HEIGHT = 20
 local SPACE_X = 50
+local EXTRA_SPACE_X = 5
 local SPACE_Y = 25
-local columns = ((love.graphics.getWidth() - (SPACE_X * DOUBLE)) / BRICK_WIDTH) - 2
+local NO_THAT_MUCH_COLUMNS = 2
+local columns = ((love.graphics.getWidth() - (SPACE_X * DOUBLE)) / BRICK_WIDTH) - NO_THAT_MUCH_COLUMNS
 local rows = 5
 
 print(love.graphics.getWidth() - SPACE_X)
 print(columns)
 for x = 1, math.abs(columns) do
 	for y = 1, rows do
-		local brickX = BRICK_WIDTH + (SPACE_X + 5) * x
+		local brickX = BRICK_WIDTH + (SPACE_X + EXTRA_SPACE_X) * x
 		local brickY = BRICK_HEIGHT + SPACE_Y * y
 		entities[#entities + 1] = brick(brickX, brickY)
 	end
