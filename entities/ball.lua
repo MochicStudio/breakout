@@ -19,6 +19,7 @@ return function(posX, posY)
 	ball.draw = function(self)
 		local ballWX, ballWY = ball.body:getWorldCenter()
 
+		love.graphics.setColor(1, 1, 1, 1)
 		love.graphics.circle('fill', ballWX, ballWY, ball.shape:getRadius())
 	end
 
@@ -35,7 +36,7 @@ return function(posX, posY)
 
 		-- Return ball speed to a safe value
 		if selfVelXIsCritical or selfVelYIsCritical then
-			self.body:setLinearVelocity(selfVelX * THREE_QUARTERS, selfVel * THREE_QUARTERS)
+			self.body:setLinearVelocity(selfVelX * THREE_QUARTERS, selfVelY * THREE_QUARTERS)
 		end
 
 		-- Stop ball. Damping is an opposite force to stop any body.
