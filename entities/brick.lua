@@ -11,7 +11,7 @@ return function(posX, posY)
 	brick.health = 3
 
 	brick.body = love.physics.newBody(world, posX, posY, 'static')
-	brick.shape = love.physics.newRectangleShape(50, 25)
+	brick.shape = love.physics.newRectangleShape(50, 20)
 	brick.fixture = love.physics.newFixture(brick.body, brick.shape)
 	-- Set the brick entity as the user data. This way we have
 	-- all the information of the entity it self and not just the name
