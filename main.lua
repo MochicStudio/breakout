@@ -4,13 +4,6 @@ local input = require('input')
 local entities = require('entities')
 
 love.draw = function()
-	local HALF = 2
-
-	if state.paused then
-		love.graphics.setColor(state.palette[4])
-		love.graphics.print('Paused', love.graphics.getWidth() / HALF, love.graphics.getHeight() / HALF)
-	end
-
 	for i, entity in ipairs(entities) do
 		-- Shorthand for entity.draw(entity)
 		if entity.draw then entity:draw() end

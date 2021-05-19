@@ -4,6 +4,7 @@ local boundaryBottom = require('entities/boundary-bottom')
 local brick = require('entities/brick')
 local ball = require('entities/ball')
 local paddle = require('entities/paddle')
+local pausedText = require('entities/paused-text')
 
 local HALF = 2
 local THREE_QUARTER = 0.75
@@ -15,6 +16,7 @@ local entities = {
 	boundaryVertical(-1, love.graphics.getHeight() / HALF), -- Left
 	ball(love.graphics.getWidth() / HALF, love.graphics.getHeight() / HALF),
 	paddle(love.graphics.getWidth() / HALF, love.graphics.getHeight() * THREE_QUARTER),
+	pausedText()
 }
 
 local DOUBLE = 2
