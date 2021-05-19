@@ -6,6 +6,7 @@ local ball = require('entities/ball')
 local paddle = require('entities/paddle')
 local pausedText = require('entities/paused-text')
 local gameOverText = require('entities/game-over-text')
+local stageClearedText = require('entities/stage-cleared-text')
 
 local HALF = 2
 local THREE_QUARTER = 0.75
@@ -18,7 +19,8 @@ local entities = {
 	ball(love.graphics.getWidth() / HALF, love.graphics.getHeight() / HALF),
 	paddle(love.graphics.getWidth() / HALF, love.graphics.getHeight() * THREE_QUARTER),
 	pausedText(),
-	gameOverText()
+	gameOverText(),
+	stageClearedText()
 }
 
 local DOUBLE = 2
