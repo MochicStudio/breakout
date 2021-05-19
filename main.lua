@@ -1,14 +1,9 @@
 local world = require('world')
+local state = require('state')
 local input = require('input')
 local entities = require('entities')
 
 love.draw = function()
-	local HALF = 2
-
-	if input.paused then
-		love.graphics.print('Paused', love.graphics.getWidth() / HALF, love.graphics.getHeight() / HALF)
-	end
-
 	for i, entity in ipairs(entities) do
 		-- Shorthand for entity.draw(entity)
 		if entity.draw then entity:draw() end
@@ -29,19 +24,26 @@ love.keyreleased = function(releasedKey)
 end
 
 love.update = function(dt)
-	if not input.paused then
-		for i, entity in ipairs(entities) do
-			if entity.update then entity:update(dt) end
+	local hasBricks = false
 
-			-- If the entity (brick) has no health
-			-- remove it from the table and destroy
-			-- its fixture
-			if entity.health == 0 then
-				table.remove(entities, i)
-				entity.fixture:destroy()
-			end
-		end
-
-		world:update(dt)
+	if state.gameOver or state.paused or state.stageCleared then
+		return
 	end
+
+	for i, entity in ipairs(entities) do
+		if entity.type == 'brick' then hasBricks = true end
+
+		if entity.update then entity:update(dt) end
+
+		-- If the entity (brick) has no health
+		-- remove it from the table and destroy
+		-- its fixture
+		if entity.health == 0 then
+			table.remove(entities, i)
+			entity.fixture:destroy()
+		end
+	end
+
+	state.stageCleared = not hasBricks
+	world:update(dt)
 end

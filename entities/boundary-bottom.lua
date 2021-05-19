@@ -1,5 +1,6 @@
 -- Boundary Bottom
 local world = require('world')
+local state = require('state')
 
 return function(posX, posY)
 	local boundaryBottom = {}
@@ -14,6 +15,10 @@ return function(posX, posY)
 	-- the entity because is out of the screen game but for code convention
 	-- we still write the draw function.
 	boundaryBottom.draw = function(self)
+	end
+
+	boundaryBottom.beginContact = function(self)
+		state.gameOver = true
 	end
 
 	return boundaryBottom

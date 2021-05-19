@@ -4,6 +4,9 @@ local boundaryBottom = require('entities/boundary-bottom')
 local brick = require('entities/brick')
 local ball = require('entities/ball')
 local paddle = require('entities/paddle')
+local pausedText = require('entities/paused-text')
+local gameOverText = require('entities/game-over-text')
+local stageClearedText = require('entities/stage-cleared-text')
 
 local HALF = 2
 local THREE_QUARTER = 0.75
@@ -15,6 +18,9 @@ local entities = {
 	boundaryVertical(-1, love.graphics.getHeight() / HALF), -- Left
 	ball(love.graphics.getWidth() / HALF, love.graphics.getHeight() / HALF),
 	paddle(love.graphics.getWidth() / HALF, love.graphics.getHeight() * THREE_QUARTER),
+	pausedText(),
+	gameOverText(),
+	stageClearedText()
 }
 
 local DOUBLE = 2
@@ -27,8 +33,6 @@ local NO_THAT_MUCH_COLUMNS = 2
 local columns = ((love.graphics.getWidth() - (SPACE_X * DOUBLE)) / BRICK_WIDTH) - NO_THAT_MUCH_COLUMNS
 local rows = 5
 
-print(love.graphics.getWidth() - SPACE_X)
-print(columns)
 for x = 1, math.abs(columns) do
 	for y = 1, rows do
 		local brickX = BRICK_WIDTH + (SPACE_X + EXTRA_SPACE_X) * x
