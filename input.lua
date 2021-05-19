@@ -1,16 +1,12 @@
 -- Input Service
 
--- Table that contains function to be accessed from entities
+local state = require('state')
+
+-- Input table
 local input = {}
 -- Specific user inputs to game actions
 local pressFunctions = {}
 local releaseFunctions = {}
-
--- Moving the paddle
-input.left = false
-input.right = false
--- Pause the game
-input.paused = false
 
 -- Look and execute corresponding action to specific key presses
 input.press = function(pressedKey)
@@ -29,18 +25,18 @@ end
 -- Window focusing/unfocusing
 input.toggleFocus = function(focused)
 	if not focused then
-		input.paused = true
+		state.paused = true
 	end
 end
 
 -- Functions itselfs
 -- Press Functions
 pressFunctions.left = function()
-	input.left = true
+	state.buttonLeft = true
 end
 
 pressFunctions.right = function()
-	input.right = true
+	state.buttonRight = true
 end
 
 pressFunctions.escape = function()
@@ -48,16 +44,16 @@ pressFunctions.escape = function()
 end
 
 pressFunctions.space = function()
-	input.paused = not input.paused
+	state.paused = not state.paused
 end
 
 -- Release Functions
 releaseFunctions.left = function()
-	input.left = false
+	state.buttonLeft = false
 end
 
 releaseFunctions.right = function()
-	input.right = false
+	state.buttonRight = false
 end
 
 return input

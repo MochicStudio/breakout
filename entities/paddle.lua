@@ -1,6 +1,6 @@
 -- Paddle Entity
 local world = require('world')
-local input = require('input')
+local state = require('state')
 
 return function(posX, posY)
 	local HALF = 2
@@ -21,13 +21,15 @@ return function(posX, posY)
 
 	-- Entity handles it's own draw function
 	paddle.draw = function(self)
-		love.graphics.setColor(1, 1, 1, 1)
+		local WHITE = 4
+
+		love.graphics.setColor(state.palette[WHITE])
 		love.graphics.polygon('fill', paddle.body:getWorldPoints(paddle.shape:getPoints()))
 	end
 
 	paddle.update = function(self)
 		-- Don't move if both keys are been pressed
-		if input.left and input.right then
+		if state.buttonLeft and state.buttonRight then
 			return
 		end
 
@@ -36,9 +38,9 @@ return function(posX, posY)
 
 		local selfX = self.body:getX()
 
-		if input.left and selfX >= self.leftBoundary then
+		if state.buttonLeft and selfX >= self.leftBoundary then
 			self.body:setLinearVelocity(-self.speed, 0)
-		elseif input.right and selfX <= self.rightBoundary then
+		elseif state.buttonRight and selfX <= self.rightBoundary then
 			self.body:setLinearVelocity(self.speed, 0)
 		else
 			self.body:setLinearVelocity(0, 0)

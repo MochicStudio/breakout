@@ -1,5 +1,6 @@
 -- Ball Entity
 local world = require('world')
+local state = require('state')
 
 return function(posX, posY)
 	local ball = {}
@@ -18,8 +19,9 @@ return function(posX, posY)
 	-- Entity handles it's own draw function
 	ball.draw = function(self)
 		local ballWX, ballWY = ball.body:getWorldCenter()
+		local WHITE = 4
 
-		love.graphics.setColor(1, 1, 1, 1)
+		love.graphics.setColor(state.palette[WHITE])
 		love.graphics.circle('fill', ballWX, ballWY, ball.shape:getRadius())
 	end
 

@@ -1,5 +1,6 @@
 -- Brick Entity
 local world = require('world')
+local state = require('state')
 
 -- We're gonna need more than one brick so we better
 -- do it dynamically returning a function that takes
@@ -19,19 +20,12 @@ return function(posX, posY)
 
 	-- Entity handles it's own draw function
 	brick.draw = function(self)
-		local HEALTHY = 3
-		local HALF_WAY = 2
-		local ALMOST_DEAD = 1
+		local WHITE = 4
 		-- Set color based on health
-		if self.health == HEALTHY then
-			love.graphics.setColor(0, 1, 0, 1)
-		elseif self.health == HALF_WAY then
-			love.graphics.setColor(1, 1, 0, 1)
-		elseif self.health == ALMOST_DEAD then
-			love.graphics.setColor(1, 0, 0, 1)
-		end
-
+		love.graphics.setColor(state.palette[self.health])
 		love.graphics.polygon('fill', brick.body:getWorldPoints(brick.shape:getPoints()))
+		-- Reset color
+		love.graphics.setColor(state.palette[WHITE])
 	end
 
 	brick.endContact = function(self)
