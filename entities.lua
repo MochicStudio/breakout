@@ -27,8 +27,6 @@ local NO_THAT_MUCH_COLUMNS = 2
 local columns = ((love.graphics.getWidth() - (SPACE_X * DOUBLE)) / BRICK_WIDTH) - NO_THAT_MUCH_COLUMNS
 local rows = 5
 
-print(love.graphics.getWidth() - SPACE_X)
-print(columns)
 for x = 1, math.abs(columns) do
 	for y = 1, rows do
 		local brickX = BRICK_WIDTH + (SPACE_X + EXTRA_SPACE_X) * x
