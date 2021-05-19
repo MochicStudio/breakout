@@ -10,6 +10,7 @@ return function(posX, posY)
 	local brick = {}
 
 	brick.health = 3
+	brick.type = 'brick'
 
 	brick.body = love.physics.newBody(world, posX, posY, 'static')
 	brick.shape = love.physics.newRectangleShape(50, 20)

@@ -24,11 +24,15 @@ love.keyreleased = function(releasedKey)
 end
 
 love.update = function(dt)
+	local hasBricks = false
+
 	if state.gameOver or state.paused or state.stageCleared then
 		return
 	end
 
 	for i, entity in ipairs(entities) do
+		if entity.type == 'brick' then hasBricks = true end
+
 		if entity.update then entity:update(dt) end
 
 		-- If the entity (brick) has no health
@@ -40,5 +44,6 @@ love.update = function(dt)
 		end
 	end
 
+	state.stageCleared = not hasBricks
 	world:update(dt)
 end
