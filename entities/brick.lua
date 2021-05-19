@@ -22,7 +22,7 @@ return function(posX, posY)
 	brick.draw = function(self)
 		local WHITE = 4
 		-- Set color based on health
-		love.graphics.setColor(state.palette[self.health])
+		love.graphics.setColor(state.palette[self.health] or state.palette[WHITE])
 		love.graphics.polygon('fill', brick.body:getWorldPoints(brick.shape:getPoints()))
 		-- Reset color
 		love.graphics.setColor(state.palette[WHITE])
