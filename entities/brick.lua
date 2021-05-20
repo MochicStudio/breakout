@@ -1,6 +1,7 @@
 -- Brick Entity
 local world = require('world')
 local state = require('state')
+local sounds = require('sounds')
 
 -- We're gonna need more than one brick so we better
 -- do it dynamically returning a function that takes
@@ -30,6 +31,8 @@ return function(posX, posY)
 	end
 
 	brick.endContact = function(self)
+		love.audio.stop()
+		love.audio.play(sounds.slap)
 		self.health = self.health - 1
 	end
 
