@@ -3,7 +3,11 @@ local state = require('state')
 local input = require('input')
 local entities = require('entities')
 
+local BLUE = 5
+
 love.draw = function()
+	love.graphics.setBackgroundColor(state.palette[BLUE])
+
 	for i, entity in ipairs(entities) do
 		-- Shorthand for entity.draw(entity)
 		if entity.draw then entity:draw() end
