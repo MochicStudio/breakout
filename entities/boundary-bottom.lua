@@ -1,6 +1,7 @@
 -- Boundary Bottom
 local world = require('world')
 local state = require('state')
+local sounds = require('sounds')
 
 return function(posX, posY)
 	local boundaryBottom = {}
@@ -18,6 +19,7 @@ return function(posX, posY)
 	end
 
 	boundaryBottom.beginContact = function(self)
+		sounds.gameOver()
 		state.gameOver = true
 	end
 
