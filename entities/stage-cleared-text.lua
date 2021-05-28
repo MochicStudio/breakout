@@ -7,9 +7,9 @@ return function()
 	local stageClearedText = {}
 
 	stageClearedText.draw = function()
-		if state.stageCleared then
+		if state.stageCleared and state.level == state.maxLevel then
 			love.graphics.print(
-				{state.palette[4], 'Stage Cleared!'},
+				{state.palette[4], 'You Won!'},
 				love.graphics.getWidth() / HALF,
 				love.graphics.getHeight() / HALF
 			)

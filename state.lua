@@ -11,5 +11,7 @@ return {
 		{0.5, 0, 0.5, 0.5} -- blue
 	},
 	paused = false,
-	stageCleared = false
+	stageCleared = false,
+	level = 1,
+	maxLevel = 8
 }

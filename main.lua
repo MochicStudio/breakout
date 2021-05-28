@@ -1,7 +1,8 @@
 local world = require('world')
 local state = require('state')
 local input = require('input')
-local entities = require('entities')
+local funcEntities = require('entities')
+local entities = funcEntities(state.level)
 
 local BLUE = 5
 
@@ -30,7 +31,7 @@ end
 love.update = function(dt)
 	local hasBricks = false
 
-	if state.gameOver or state.paused or state.stageCleared then
+	if state.gameOver or state.paused or (state.stageCleared and state.level == state.maxLevel) then
 		return
 	end
 
@@ -49,5 +50,25 @@ love.update = function(dt)
 	end
 
 	state.stageCleared = not hasBricks
+
+	if state.stageCleared and state.level < state.maxLevel then
+		-- Clear stage
+		local index = 1
+		while index <= #entities do
+			local entity = entities[index]
+			table.remove(entities, index)
+			-- There are entities that has not have a fixture
+			-- so we validate that to not get an error for nil values
+			if entity.fixture then
+				entity.fixture:destroy()
+			end
+			index = index + 1
+		end
+
+		-- Start new level
+		state.level = state.level + 1
+		entities = funcEntities(state.level)
+	end
+
 	world:update(dt)
 end

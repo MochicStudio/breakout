@@ -31,8 +31,7 @@ return function(posX, posY)
 	end
 
 	brick.endContact = function(self)
-		love.audio.stop()
-		love.audio.play(sounds.slap)
+		sounds.slap()
 		self.health = self.health - 1
 	end
 
