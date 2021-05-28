@@ -31,7 +31,7 @@ end
 love.update = function(dt)
 	local hasBricks = false
 
-	if state.gameOver or state.paused then
+	if state.gameOver or state.paused or (state.stageCleared and state.level == state.maxLevel) then
 		return
 	end
 
@@ -51,13 +51,17 @@ love.update = function(dt)
 
 	state.stageCleared = not hasBricks
 
-	if state.stageCleared then
+	if state.stageCleared and state.level < state.maxLevel then
 		-- Clear stage
 		local index = 1
 		while index <= #entities do
 			local entity = entities[index]
 			table.remove(entities, index)
-			entity.fixture:destroy()
+			-- There are entities that has not have a fixture
+			-- so we validate that to not get an error for nil values
+			if entity.fixture then
+				entity.fixture:destroy()
+			end
 			index = index + 1
 		end
 
