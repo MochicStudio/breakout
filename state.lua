@@ -12,5 +12,6 @@ return {
 	},
 	paused = false,
 	stageCleared = false,
-	level = 1
+	level = 1,
+	maxLevel = 8
 }
