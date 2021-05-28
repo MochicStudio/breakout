@@ -10,7 +10,7 @@ local sounds = require('sounds')
 return function(posX, posY)
 	local brick = {}
 
-	brick.health = 1
+	brick.health = 3
 	brick.type = 'brick'
 
 	brick.body = love.physics.newBody(world, posX, posY, 'static')
