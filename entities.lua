@@ -31,7 +31,7 @@ return function(rows)
 	local EXTRA_SPACE_X = 5
 	local SPACE_Y = 25
 	local NO_THAT_MUCH_COLUMNS = 2
-	local columns = 1-- ((love.graphics.getWidth() - (SPACE_X * DOUBLE)) / BRICK_WIDTH) - NO_THAT_MUCH_COLUMNS
+	local columns = ((love.graphics.getWidth() - (SPACE_X * DOUBLE)) / BRICK_WIDTH) - NO_THAT_MUCH_COLUMNS
 
 	for x = 1, math.abs(columns) do
 		for y = 1, rows do
