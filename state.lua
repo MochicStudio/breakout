@@ -13,5 +13,6 @@ return {
 	paused = false,
 	stageCleared = false,
 	level = 1,
-	maxLevel = 8
+	maxLevel = 8,
+	score = 0
 }
