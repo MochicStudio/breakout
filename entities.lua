@@ -7,6 +7,7 @@ local paddle = require('entities/paddle')
 local pausedText = require('entities/paused-text')
 local gameOverText = require('entities/game-over-text')
 local scoreText = require('entities/score-text')
+local levelText = require('entities/level-text')
 local stageClearedText = require('entities/stage-cleared-text')
 
 return function(rows)
@@ -23,6 +24,7 @@ return function(rows)
 		pausedText(),
 		gameOverText(),
 		scoreText(),
+		levelText(),
 		stageClearedText()
 	}
 
