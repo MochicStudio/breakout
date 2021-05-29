@@ -33,6 +33,7 @@ return function(posX, posY)
 	brick.endContact = function(self)
 		sounds.slap()
 		self.health = self.health - 1
+		state.score = state.score + 1
 	end
 
 	return brick
