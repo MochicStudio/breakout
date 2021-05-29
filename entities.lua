@@ -12,7 +12,7 @@ local stageClearedText = require('entities/stage-cleared-text')
 
 return function(rows)
 	local HALF = 2
-	local THREE_QUARTER = 0.75
+	local SEVEN_EIGHT = 7/8
 
 	local entities = {
 		boundaryTop(love.graphics.getWidth() / HALF, -1),
@@ -20,7 +20,7 @@ return function(rows)
 		boundaryBottom(love.graphics.getWidth() / HALF, love.graphics.getHeight() + 1),
 		boundaryVertical(-1, love.graphics.getHeight() / HALF), -- Left
 		ball(love.graphics.getWidth() / HALF, love.graphics.getHeight() / HALF),
-		paddle(love.graphics.getWidth() / HALF, love.graphics.getHeight() * THREE_QUARTER),
+		paddle(love.graphics.getWidth() / HALF, love.graphics.getHeight() * SEVEN_EIGHT),
 		pausedText(),
 		gameOverText(),
 		scoreText(),
